@@ -27,7 +27,7 @@ public class Poblacion {
     }
 
 
-    public ArrayList<Individuo> getNMejores(int n) {
+    public ArrayList<Individuo> getMejoresIndividuos(int n) {
         // Validamos que n no sea mas grande que el tamaño de la población
         if (n <= this.individuos.size()) { //se modifico por <=
             // ordenar a la población
@@ -46,7 +46,7 @@ public class Poblacion {
         return (ArrayList<Individuo>) this.individuos.clone();
     }
 
-    public Individuo getMejor() {
+    public Individuo getMejorIndividuo() {
         int idMejor = 0;
         for (int x = 1; x < this.individuos.size(); x++) {
             if (this.individuos.get(x).getFitness() > this.individuos.get(idMejor).getFitness()) {

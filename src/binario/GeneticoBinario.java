@@ -34,7 +34,7 @@ public class GeneticoBinario {
     }
     
 
-    public void evolucionar(){
+    public void crearNuevasGeneraciones(){
         // Iteramos de acuerdo al numero de generaciones
         for (int g = 1; g <= this.numGeneraciones; g++) {
             // Creamos un ArrayList para la nueva poblacion
@@ -65,7 +65,7 @@ public class GeneticoBinario {
             System.out.println("Generacion: "+g+" creada");
         }
         // pedimos el mejor a la poblacion 
-        Individuo mejorIndividuo = this.poblacionActual.getMejor();
+        Individuo mejorIndividuo = this.poblacionActual.getMejorIndividuo();
         
         System.out.println("El mejor individuo tiene genotipo: "+Arrays.toString(mejorIndividuo.getGenotipo()));
         System.out.println("El mejor individuo tiene fenotipo: "+mejorIndividuo.getFenotipo());

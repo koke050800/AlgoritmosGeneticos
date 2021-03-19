@@ -56,7 +56,7 @@ public class Geneticos20212 {
         int[] mask = Herramientas.generarArregloBinarios(tamIndividuos);
                 
         GeneticoBinario gb1 = new GeneticoBinario(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
-        gb1.evolucionar();
+        gb1.crearNuevasGeneraciones();
         
         
         
