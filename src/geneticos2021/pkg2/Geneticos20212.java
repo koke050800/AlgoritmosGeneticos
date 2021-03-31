@@ -5,10 +5,13 @@
  */
 package geneticos2021.pkg2;
 
+import ReinasCHIDO.GeneticoReinas;
+import ReinasCHIDO.HerramientasReinas;
+import ReinasCHIDO.Individuo;
 import binario.Cruza;
 import binario.GeneticoBinario;
 import binario.Herramientas;
-import binario.Individuo;
+//import binario.Individuo;
 import binario.Muta;
 import binario.Poblacion;
 import java.util.ArrayList;
@@ -49,16 +52,21 @@ public class Geneticos20212 {
         
         System.out.println("Fenotipo: " + individuos.get(0).getFenotipo() + "    Fitness: " + individuos.get(0).getFitness());*/
         
-        int numGeneraciones = 100;
-        int tamPoblacion = 10;
-        int tamIndividuos = 10;
-        double pMuta = 0.09;
-        int[] mask = Herramientas.generarArregloBinarios(tamIndividuos);
+        int numGeneraciones = 10000;
+        int tamPoblacion = 200;
+        int tamIndividuos = 100;
+        double pMuta = 0.12;
+        //int[] mask = Herramientas.generarArregloBinarios(tamIndividuos);
                 
-        GeneticoBinario gb1 = new GeneticoBinario(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
-        gb1.crearNuevasGeneraciones();
+        /*GeneticoBinario gb1 = new GeneticoBinario(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
+        gb1.crearNuevasGeneraciones();*/
         
+        int[] mask = HerramientasReinas.generarMascaraAleatoria(tamIndividuos);
+        GeneticoReinas reinas1 = new GeneticoReinas(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
+        reinas1.crearNuevasGeneraciones();
         
+       
+
         
 
     }
