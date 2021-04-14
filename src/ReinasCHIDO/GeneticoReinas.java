@@ -80,28 +80,27 @@ public class GeneticoReinas {
         // pedimos el mejor a la poblacion 
         Individuo mejorIndividuo = this.poblacionActual.getMejorIndividuo();
         
-
-        
         System.out.println("El mejor individuo tiene genotipo: "+Arrays.toString(mejorIndividuo.getGenotipo()));
         System.out.println("Con el fitness: "+mejorIndividuo.getFitness()); 
         System.out.println();
-       
-        /*System.out.println("Los mejores son: ");
-          for (Individuo aux : this.poblacionActual.getMejoresIndividuos(50)) {
 
-            System.out.println("Fitness: " + aux.getFitness() + "  Genotipo; " + Arrays.toString(aux.genotipo));
-        }
-        System.out.println();*/
-        
         Histograma h1 = new Histograma(mejoresFitness);
         h1.graficar();
-        /*for(int aux: h1.getFitnessMejores())
-            System.out.println("Fitness: "+aux); */
-        
-        
+
         
     }
+
+    public void setPoblacionActual(Poblacion poblacionActual) {
+        this.poblacionActual = poblacionActual;
+    }
+
+    public Poblacion getPoblacionActual() {
+        return poblacionActual;
+    }
     
+    
+    
+
     
 
 

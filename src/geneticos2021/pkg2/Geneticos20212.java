@@ -5,6 +5,7 @@
  */
 package geneticos2021.pkg2;
 
+import GuardarArchivos.Archivo;
 import ReinasCHIDO.GeneticoReinas;
 import ReinasCHIDO.HerramientasReinas;
 import ReinasCHIDO.Individuo;
@@ -14,7 +15,11 @@ import binario.Herramientas;
 //import binario.Individuo;
 import binario.Muta;
 import binario.Poblacion;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,22 +57,29 @@ public class Geneticos20212 {
         
         System.out.println("Fenotipo: " + individuos.get(0).getFenotipo() + "    Fitness: " + individuos.get(0).getFitness());*/
         
-        int numGeneraciones = 10000;
-        int tamPoblacion = 200;
-        int tamIndividuos = 100;
+        int numGeneraciones = 400;
+        int tamPoblacion = 100;
+        int tamIndividuos = 8;
         double pMuta = 0.12;
-        //int[] mask = Herramientas.generarArregloBinarios(tamIndividuos);
-                
-        /*GeneticoBinario gb1 = new GeneticoBinario(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
-        gb1.crearNuevasGeneraciones();*/
         
         int[] mask = HerramientasReinas.generarMascaraAleatoria(tamIndividuos);
         GeneticoReinas reinas1 = new GeneticoReinas(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask);
         reinas1.crearNuevasGeneraciones();
+    
+        ArrayList<Individuo> guardarMejores = new ArrayList<>();
+        guardarMejores = (ArrayList<Individuo>) reinas1.getPoblacionActual().getMejoresIndividuos(10).clone();
+        Archivo.escribir(guardarMejores);
         
-       
+        ArrayList<Individuo> tokenizada = new ArrayList<>();
+        try {
+            tokenizada = Archivo.tokenizarDataSet();
+            for(Individuo aux : tokenizada)
+                System.out.println(Arrays.toString(aux.getGenotipo()));
+                
+        } catch (IOException ex) {
+            Logger.getLogger(Geneticos20212.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-        
 
     }
 

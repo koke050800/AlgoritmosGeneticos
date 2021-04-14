@@ -47,8 +47,8 @@ public class Individuo {
                         fitness++;
                         //System.out.println("reina " + posX + " fitness h: " + fitness);
                     }
-
-                    if ((posX + posY) == i + genotipo[i] || (posX - posY) == i - genotipo[i]) {//revisamos diagonales
+                    //revisamos diagonales
+                    if ((posX + posY) == i + genotipo[i] || (posX - posY) == i - genotipo[i]) {
                         fitness++;
                         //System.out.println("reina " + posX + " fitness d: " + fitness);
                     }
