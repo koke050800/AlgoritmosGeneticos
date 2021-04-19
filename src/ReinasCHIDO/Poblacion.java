@@ -6,6 +6,7 @@
 package ReinasCHIDO;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -95,6 +96,26 @@ public class Poblacion {
             }
         }
 
+    }
+
+    public int getFitnessTotal() {
+        int acumulador = 0;
+
+        for (int i = 0; i < individuos.size(); i++) {
+            acumulador+= individuos.get(i).getFitness();
+
+        }
+        return acumulador;
+    }
+
+    public void mostrarPob() {
+        System.out.println("Tengo " + individuos.size()+" individuos");
+        for (int z = 0; z < individuos.size(); z++) {
+            String aux = "Genotipo: ";
+            aux += Arrays.toString(individuos.get(z).getGenotipo());            
+            aux += " Fenotipo => " + individuos.get(z).getFitness();
+            System.out.println(aux);
+        }
     }
 
 
