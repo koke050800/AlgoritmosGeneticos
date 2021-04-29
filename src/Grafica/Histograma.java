@@ -25,7 +25,7 @@ public class Histograma {
     }
 
     public void graficar() {
-        Grafica g1 = new Grafica("Numero de Generacion", "Fitness", "Fitness de por generacion del problema N Reinas");
+        Grafica g1 = new Grafica("Numero de Generacion", "Fitness", "Fitness de por generacion del problema");
         g1.crearSerie("Fitness", this.fitnessMejores);
         g1.mostrarGrafica();
 
