@@ -9,6 +9,8 @@ import GuardarArchivos.Archivo;
 import ReinasCHIDO.GeneticoReinas;
 import ReinasCHIDO.HerramientasReinas;
 import ReinasCHIDO.Individuo;
+import TSP.GeneticoTSP;
+import TSP.HerramientasTSP;
 import binario.Cruza;
 import binario.GeneticoBinario;
 import binario.Herramientas;
@@ -57,7 +59,7 @@ public class Geneticos20212 {
         
         System.out.println("Fenotipo: " + individuos.get(0).getFenotipo() + "    Fitness: " + individuos.get(0).getFitness());*/
         
-        int numGeneraciones = 400;
+       /*int numGeneraciones = 400;
         int tamPoblacion = 100;
         int tamIndividuos = 8;
         double pMuta = 0.12;
@@ -78,9 +80,23 @@ public class Geneticos20212 {
                 
         } catch (IOException ex) {
             Logger.getLogger(Geneticos20212.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        int numGeneraciones = 350000;
+        int tamPoblacion = 70;
+        int nCiudades = 500;
+        int ciudadInicial = 3;
+        double pMuta = 0.12;
+
+        if (ciudadInicial < nCiudades) {
+            //GeneticoTSP tsp1 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, nCiudades);
+            //tsp1.crearNuevasGeneraciones();
+            
+            GeneticoTSP tsp2 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, HerramientasTSP.cargarMatrizDeDistancias());
+            tsp2.crearNuevasGeneraciones();
         }
-
-
+        
+        
+        
     }
 
 }

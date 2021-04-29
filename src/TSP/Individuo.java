@@ -22,16 +22,18 @@ public class Individuo {
     public Individuo() {
     }
 
-    public Individuo(int ciudadInicial) {
-        
-        int matrizCargada[][] = HerramientasTSP.cargarMatrizDeDistancias();
-        int nCiudades = matrizCargada[0].length;
-        genotipo = new int[nCiudades];
+    public Individuo(int ciudadInicial, int matrizCargada[][]) {
+        genotipo = new int[matrizCargada[0].length];
         genotipo[0] = ciudadInicial;
         this.distanciasCaminos = matrizCargada;
         creaeGenotipoAleatorio();
         calcularFitness();
+    }
 
+    public Individuo(int genotipo[], int matrizCargada[][]) {       
+        this.genotipo = genotipo.clone();
+        this.distanciasCaminos = matrizCargada;
+        calcularFitness();
     }
 
     public Individuo(int ciudadInicial, int nCiudades) {
@@ -40,21 +42,28 @@ public class Individuo {
         this.distanciasCaminos = HerramientasTSP.inicializaCaminos(nCiudades);
         creaeGenotipoAleatorio();
         calcularFitness();
-        HerramientasTSP.escribir(distanciasCaminos);
-
-    }
-
-    public Individuo(int ciudadInicial, int matrizCargada[][]) {
-        int nCiudades = matrizCargada[0].length;
-        genotipo = new int[nCiudades];
-        genotipo[0] = ciudadInicial;
-        this.distanciasCaminos = matrizCargada;
-        creaeGenotipoAleatorio();
-        calcularFitness();
+        //HerramientasTSP.escribir(distanciasCaminos);
 
     }
 
     public void calcularFitness() {
+        this.fitness = 0;
+        if (distanciasCaminos != null) {
+            this.fitness = 0;
+            for (int j = 1; j < distanciasCaminos.length; j++) {
+                this.fitness += distanciasCaminos[this.genotipo[j - 1]][this.genotipo[j]];
+                //System.out.println("Sumado: " + distanciasCaminos[this.genotipo[j - 1]][this.genotipo[j]]);
+
+            }
+            this.fitness += distanciasCaminos[this.genotipo[0]][this.genotipo[distanciasCaminos.length - 1]];
+            //System.out.println("Sumado: " + distanciasCaminos[this.genotipo[0]][this.genotipo[distanciasCaminos.length - 1]]);
+
+            //System.out.println("Fitness: " + this.fitness);
+        }
+
+    }
+
+    public void calcularFitness2() {
         this.fitness = 0;
         if (distanciasCaminos != null) {
             this.fitness = 0;
@@ -86,13 +95,31 @@ public class Individuo {
             // eliminamos de las ciudades
             ciudades.remove(pos);
         }
-        System.out.println(Arrays.toString(genotipo));
+        //System.out.println("Gebotipo creado aleatorio-> "+Arrays.toString(genotipo));
 
     }
+    
+    public void actualizarIndividuo(){
+        calcularFitness();    
+    }
+    
+    
 
+    public void setGenotipo(int[] genotipo) {
+        this.genotipo = genotipo;
+    }
 
- 
+    public void setFitness(int fitness) {
+        this.fitness = fitness;
+        
+    }
+    public void setFitness() {
+        calcularFitness();        
+    }
 
+    public void setDistanciasCaminos(int[][] distanciasCaminos) {
+        this.distanciasCaminos = distanciasCaminos;
+    }
 
     public int[] getGenotipo() {
         return genotipo;
@@ -122,10 +149,7 @@ public class Individuo {
         HerramientasTSP.imprimirMat(i2.getDistanciasCaminos());*/
        
        
-        Individuo i2 = new Individuo(3);
-        System.out.println("FITNESS FINAL>> " + i2.getFitness());
-        System.out.println();
-        HerramientasTSP.imprimirMat(i2.getDistanciasCaminos());
+
        
 
     }
