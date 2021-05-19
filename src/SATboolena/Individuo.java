@@ -50,26 +50,21 @@ public class Individuo {
     
     private boolean instanciaIsTrue(int[] elementos) {
         int ev, cont = 0;
-        // System.out.println("PRUEBA ");
+
         for (int x = 0; x < elementos.length; x++) {
-            // System.out.println("VALOR "+ x);
+
             ev = getGenotipo()[Math.abs(elementos[x]) - 1];
-            // System.out.print("VALOR evaluado: "+(Math.abs(elementos[x])-1));
-            // System.out.print(" VALOR: "+ elementos[x]+ " BINARIO: "+ev);
+
             if (elementos[x] * -1 == Math.abs(elementos[x])) {
                 ev = ev - 1;
             }
-            //System.out.print(" cambio?: "+ ev);
-            //System.out.println(ev);
+
             if (Math.abs(ev) == 1) {
                 cont++;
             }
 
-            // System.out.print(" cambio a: "+ Math.abs(ev));
-            //System.out.println();
         }
         if (cont != 0) {
-            // System.out.println("----- CLARO QUE YES------");
             return true;
         } else {
             return false;
