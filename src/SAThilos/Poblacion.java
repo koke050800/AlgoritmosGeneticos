@@ -103,5 +103,26 @@ public class Poblacion {
         }
 
     }
+    
+    public int getFitnessTotal() {
+        int fitT = 0;
+
+        for (int i = 0; i < this.individuos.size(); i++) {
+            fitT += this.individuos.get(i).getFitness();
+
+        }
+        return fitT;
+    }
+
+    public ArrayList<Instancias> getInstancias() {
+        return instancias;
+    }
+
+    public void setInstancias(ArrayList<Instancias> instancias) {
+        this.instancias = instancias;
+    }
+    
+    
+    
 
 }

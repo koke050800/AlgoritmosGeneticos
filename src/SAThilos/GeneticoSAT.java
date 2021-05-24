@@ -22,6 +22,7 @@ public class GeneticoSAT implements Runnable{
     int[] mask;
     ArrayList<Instancias> instancias;
     int[] mejoresFitness;
+     private int seleccion=1;
 
     public GeneticoSAT(int numGeneraciones, int tamPoblacion, int tamIndividuos, double pMuta, int[] mask, ArrayList<Instancias> instancias) {
         this.instancias = (ArrayList<Instancias>) instancias.clone();
@@ -50,14 +51,10 @@ public class GeneticoSAT implements Runnable{
             ArrayList<Individuo> nuevaPoblacion = new ArrayList<>();
             for (int i = 0; i < this.tamPoblacion; i++) {
                 
-                // seleccionamos aleatoriamente los padres
-                Random ran = new Random();
+       
                 
-                int posMadre = ran.nextInt(tamPoblacion-1);
-                int posPadre = ran.nextInt(tamPoblacion-1);
-                
-                Individuo madre = this.poblacionActual.getIndividuos().get(posMadre);                    
-                Individuo padre = this.poblacionActual.getIndividuos().get(posPadre);
+                Individuo madre = eligeSeleccion(this.seleccion);                    
+                Individuo padre = eligeSeleccion(this.seleccion);
                 
                 
                 // Cruzamos para crear a los hijos
@@ -95,6 +92,25 @@ public class GeneticoSAT implements Runnable{
         Histograma h1 = new Histograma(mejoresFitness);
         h1.graficar();
     }
+    
+    private Individuo eligeSeleccion(int s) {
+        Individuo i = null;
+        switch (s) {
+            case 1:
+                i = Seleccion.seleccionAleatoria(this.poblacionActual);
+                break;
+            case 2:
+                i = Seleccion.seleccionTorneo(this.poblacionActual);
+                break;
+            case 3:
+                i = Seleccion.seleccionRuleta(this.poblacionActual);
+                break;
+            default:
+                break;
+
+        }
+        return i;
+    }
 
     public Poblacion getPoblacionActual() {
         return poblacionActual;
@@ -114,10 +130,15 @@ public class GeneticoSAT implements Runnable{
 
     @Override
     public void run() {
-      crearNuevasGeneraciones();
+        crearNuevasGeneraciones();
     }
 
+    public int getSeleccion() {
+        return seleccion;
+    }
 
-    
+    public void setSeleccion(int seleccion) {
+        this.seleccion = seleccion;
+    }
 
 }

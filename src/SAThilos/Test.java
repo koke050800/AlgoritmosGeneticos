@@ -21,10 +21,10 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
 
-        int numGeneraciones = 200000;
-        int tamPoblacion = 70;
+        int numGeneraciones = 30000;
+        int tamPoblacion = 100;
         int tamIndividuos = 100;
-        double pMuta = 0.20;
+        double pMuta = 0.12;
         
         
 
