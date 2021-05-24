@@ -19,15 +19,15 @@ public class JFrameMuta extends javax.swing.JFrame {
     GeneticoSAT genetico;
     
     public JFrameMuta(GeneticoSAT genetico) {
-        initComponents();
-        this.genetico = genetico;
-        
-        ListenerHilos lis = new ListenerHilos(this, genetico);
-        this.jButtonMuta.addActionListener(lis);
-        
-        Thread hiloSATMuta = new Thread(genetico);
-        hiloSATMuta.start();
-        
+//        initComponents();
+//        this.genetico = genetico;
+//        
+//        ListenerHilos lis = new ListenerHilos(this, genetico);
+//        this.jButtonMuta.addActionListener(lis);
+//        
+//        Thread hiloSATMuta = new Thread(genetico);
+//        hiloSATMuta.start();
+//        
     }
 
     /**

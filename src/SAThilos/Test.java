@@ -21,20 +21,7 @@ public class Test {
 
     public static void main(String[] args) throws IOException {
 
-        int numGeneraciones = 30000;
-        int tamPoblacion = 100;
-        int tamIndividuos = 100;
-        double pMuta = 0.12;
-        
-        
-
-        int[] mask = HerramientasSAT.generarMascaraAleatoria(tamIndividuos);
-        ArrayList<Instancias> instancias = ArchivosSAT.tokenizarDataSet();
-
-        
-        GeneticoSAT satBooleana = new GeneticoSAT(numGeneraciones, tamPoblacion, tamIndividuos, pMuta, mask, instancias);
-        
-        JFrameMuta frame = new JFrameMuta(satBooleana);
+        JFrameCambios frame = new JFrameCambios();
         frame.setVisible(true);
 
     }
