@@ -9,8 +9,8 @@ import GuardarArchivos.Archivo;
 import ReinasCHIDO.GeneticoReinas;
 import ReinasCHIDO.HerramientasReinas;
 import ReinasCHIDO.Individuo;
-import TSP.GeneticoTSP;
-import TSP.HerramientasTSP;
+import TSPinclinaciones.GeneticoTSP;
+import TSPinclinaciones.HerramientasTSP;
 import binario.Cruza;
 import binario.GeneticoBinario;
 import binario.Herramientas;
@@ -81,17 +81,18 @@ public class Geneticos20212 {
         } catch (IOException ex) {
             Logger.getLogger(Geneticos20212.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        int numGeneraciones = 350000;
+        int numGeneraciones = 10000;
         int tamPoblacion = 70;
-        int nCiudades = 500;
+        int nCiudades = 100;
         int ciudadInicial = 3;
         double pMuta = 0.12;
+        int limiteInclinaciones = 5;
 
         if (ciudadInicial < nCiudades) {
-            //GeneticoTSP tsp1 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, nCiudades);
-            //tsp1.crearNuevasGeneraciones();
+//            GeneticoTSP tsp1 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, nCiudades, 5);
+//            tsp1.crearNuevasGeneraciones();
             
-            GeneticoTSP tsp2 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, HerramientasTSP.cargarMatrizDeDistancias());
+            GeneticoTSP tsp2 = new GeneticoTSP(numGeneraciones, tamPoblacion, pMuta, ciudadInicial, HerramientasTSP.cargarMatrizDeDistancias(), HerramientasTSP.cargarInclinaciones());
             tsp2.crearNuevasGeneraciones();
         }
         
