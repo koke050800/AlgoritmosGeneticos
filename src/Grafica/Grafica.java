@@ -6,10 +6,14 @@
 package Grafica;
 
 
+import java.awt.Dimension;
+import java.util.ArrayList;
 import org.jfree.chart.ChartFactory;
 
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataItem;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
@@ -19,7 +23,7 @@ import org.jfree.data.xy.XYSeriesCollection;
  * @author KOKE
  */
 public class Grafica {
-    
+
     private JFreeChart grafica;
     private XYSeriesCollection series;
     private String ejeX, ejeY, titulo;
@@ -43,7 +47,23 @@ public class Grafica {
         this.series.addSeries(serie);
     }
 
-    public void mostrarGrafica() {
+    public void crearSerie(String nombre, ArrayList<Integer> datos) {
+
+        XYSeries serie = new XYSeries(nombre);
+        // agregar cada uno de los datos en la serie 
+        for (int x = 0; x < datos.size(); x++) {
+            serie.add(x, datos.get(x));
+        }
+        // agregamos la serie que se generÃ³
+
+        this.series.addSeries(serie);
+    }
+
+    public void crearGrafica() {
+        this.grafica = ChartFactory.createXYLineChart(titulo, ejeX, ejeY, series, PlotOrientation.VERTICAL, true, true, true);
+    }
+
+    public void crearYmostrarGrafica() {
 
         this.grafica = ChartFactory.createXYLineChart(titulo, ejeX, ejeY, series);
         // crear un panel con la grafica
@@ -52,5 +72,16 @@ public class Grafica {
         panel.setVisible(true);
 
     }
-    
+
+    public ChartPanel crearChartPanel(Dimension d) {
+        ChartPanel chartpanel = new ChartPanel(grafica);
+        chartpanel.setVisible(true);
+        chartpanel.setSize(d);
+        return chartpanel;
+    }
+
+    public JFreeChart getGrafica() {
+        return this.grafica;
+    }
+
 }
